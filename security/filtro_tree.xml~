@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+		<record id="miejecucionfisica" model="ir.rule">
+            <field name="name">Mis Ejecuciones Fisicas</field>
+            <field name="model_id" ref="model_ejecucion_fisica"/>
+            <field name="domain_force">[('create_uid','=',user.id)]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='False'/>
+            <field name="perm_create" eval='False'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('group_coor_tecnicos'))]"/>
+        </record>
+		<record id="mifundo" model="ir.rule">
+            <field name="name">Mis fundo de tecnicos</field>
+            <field name="model_id" ref="model_fundo"/>
+            <field name="domain_force">[('id','in',[ p.id for p in user.fundo_ids ])]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='False'/>
+            <field name="perm_create" eval='False'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('group_coor_tecnicos'))]"/>
+        </record>
+        <record id="migrupofamiliar" model="ir.rule">
+            <field name="name">Mis familia de tecnicos</field>
+            <field name="model_id" ref="model_grupo_familiar"/>
+            <field name="domain_force">[('miembro_referencial_id.fundo_id','in',[ p.id for p in user.fundo_ids ])]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='False'/>
+            <field name="perm_create" eval='False'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('group_coor_tecnicos'))]"/>
+        </record>
+        <record id="mifundosupervisor" model="ir.rule">
+            <field name="name">Mis fundo de supervisor</field>
+            <field name="model_id" ref="model_ejecucion_fisica"/>
+            <field name="domain_force">[('fundo_id','in',[ p.id for p in user.fundo_ids ])]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='False'/>
+            <field name="perm_create" eval='False'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('group_coor_sup_tec'))]"/>
+        </record>
+        <record id="miejecuciosupervisor" model="ir.rule">
+            <field name="name">mis tecnicos a supervisar</field>
+            <field name="model_id" ref="model_fundo"/>
+            <field name="domain_force">[('id','in',[ p.id for p in user.fundo_ids ])]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='False'/>
+            <field name="perm_create" eval='False'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('group_coor_sup_tec'))]"/>
+        </record>
+        <record id="miorganizaciones_tec" model="ir.rule">
+            <field name="name">mis organizaciones de los tecnicos</field>
+            <field name="model_id" ref="model_organizacion"/>
+            <field name="domain_force">[('fundo_id','in',[ p.id for p in user.fundo_ids ])]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='False'/>
+            <field name="perm_create" eval='False'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('group_coor_tecnicos'))]"/>
+        </record>
+	
+   </data>
+</openerp>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+     <data>
+
+    <record model="ir.ui.view" id="view_res_user_cf_form">
+        <field name="name">res.users.form.inherit5</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+			
+			 <div class="oe_title" position="inside">
+				 <label for="cedula" class="oe_edit_only" />
+				 <h2><field name="cedula" select="1" /></h2>
+				 <label for="telefono" class="oe_edit_only" />
+				 <h2><field name="telefono" select="1" /></h2>
+			 </div>
+       
+           
+			<page string="Preferences" position="before">
+				
+					
+					<page string="Fundo Zamorano">
+					
+						  
+					<separator string="Fundo Zamorano" colspan="4"/>
+					<field name="fundo_ids" colspan="4" nolabel="1" select="0"/>
+					</page>
+						 <page string="Direccion" >
+				   <group >
+                       <group>
+                            <field name="redi_id" select="0" />
+                            <field name="estado_id" select="1" domain="[('redi_id','=',[redi_id])]"/>
+                            <field name="municipio_id" select="2" domain="[('estado_id','=',[estado_id])]"/>
+                            <field name="parroquia_id" select="3" domain="[('municipio_id','=',[municipio_id])]"/>
+                        </group>
+                        <group>
+                            <field name="sector" select="4"/>
+                            <field name="calle" select="0"/>
+                            <field name="casa/apto" select="0"/>
+                        </group>
+                        
+					</group>
+						</page>
+
+			</page>
+			
+        </field>
+    </record>
+    
+
+    
+    <menuitem name="Usuario" action="base.action_res_users" id="menu_action_res_users2" groups="group_coor_dir,group_admin_fundo"/>
+</data>
+</openerp>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+    <report
+        id="report_ejecucion_fisica"
+        string="Listado ejecucion fisica"
+        model="ejecucion_fisica"
+        name="ejecucion_fisica.familias_atendidas"
+        rml="ciara_fz/report/ejecucion_fisica_report.rml"
+        menu="False"
+        auto="False"/>
+        
+    </data>
+     
+</openerp>

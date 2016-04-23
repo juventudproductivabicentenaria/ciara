@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <record  id="view_ejecucion_fisica_wizard_form" model="ir.ui.view"  >
+            <field name="name">ejecucion_fisica.report.wizard.form</field>
+            <field name="model">ejecucion_fisica.report.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Ejecucion fisica Report Wizard">
+                    <field name="date_start" colspan='4' />
+                    <field name="date_end" colspan='4'/>
+                    <newline/>
+					<separator colspan='4'/>
+					<newline/>
+					<button icon="gtk-cancel" string="Cancel" special="cancel"/>
+                    <button icon="gtk-print" name="print_report" string="Print" type="object"/>
+               </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_ejecucion_fisica_wizard" >
+            <field name="name">Ejecucion Fisica Wizard</field>
+            <field name="res_model">ejecucion_fisica.report.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+
+        <menuitem 
+            name="Ejecucion fisica Reportes"
+            id="menu_ejecucion_fisica_wizard"
+            parent="menu_ref"
+            action="action_ejecucion_fisica_wizard"
+            sequence="90"/>
+
+            
+      
+    </data>
+</openerp>
